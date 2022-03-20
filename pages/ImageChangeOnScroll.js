@@ -1,6 +1,6 @@
 import React from "react";
 import ImageToToggleOnScroll from "../src/ImageToggleOnScroll";
-import ImageToToggle from "../src/ImageToggleOnScroll";
+
 
 const ImageChangeOnScroll = () => {
     return (
@@ -11,10 +11,10 @@ const ImageChangeOnScroll = () => {
                         <ImageToToggleOnScroll
                         bwImg={`../static/speakers/bw/Speaker-${speakerId}.jpg`} colImg={`../static/speakers/Speaker-${speakerId}.jpg`} alt=""/>
                             </div>
-                )
+                );
             })}
         </div> 
-    )
-}
+    );
+};
 
-export default ImageChangeOnScroll
+export default ImageChangeOnScroll;

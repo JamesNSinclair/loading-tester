@@ -1,24 +1,23 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
-const inputElement = () => {
+const InputElement = () => {
+  const [inputText, setInputText] = useState("");
+  const [historyList, setHistoryList] = useState([]);
 
-const [inputText, setInputText] = useState("");
-const [historyList, setHistoryList] = useState([]);
-
-    return (<div>
+  return (<div>
         <input onChange={(e) => {
-            setInputText(e.target.value)
-            setHistoryList([...historyList, e.target.value])
+          setInputText(e.target.value);
+          setHistoryList([...historyList, e.target.value]);
         }}
         placeholder="this is a placeholder" />
         <p>{inputText}</p>
         <hr/><br/>
         <ul>
-        {historyList.map((item) => {return <div key="">{item}</div>})}
-            </ul>
+        {historyList.map((item) => { return <div key="">{item}</div>;})}
+        </ul>
   
-</div>
-    )
-}
+          </div>
+  );
+};
 
-export default inputElement;
+export default InputElement;
