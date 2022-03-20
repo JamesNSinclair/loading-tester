@@ -6,7 +6,7 @@ export const Menu = () => {
 
      
         const toggleSignUp = useUpdateConfigContext();
-
+console.log('Menu')
   return (
     <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
       <div className="navbar">

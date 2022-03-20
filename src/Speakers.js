@@ -8,7 +8,8 @@ import SpeakerDays from "./SpeakerDays";
 
 
 const Speakers = ({}) => {
-
+    const [speakingSaturday, setSpeakingSaturday] = useState(true);
+    const [speakingSunday, setSpeakingSunday] = useState(true);
 
   const [speakerList, setSpeakerList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

@@ -1,6 +1,7 @@
 import React from 'react';
 import ImageToggleOnScroll from './ImageToggleOnScroll';
 
+
 const SpeakerDetail = ({
   id,
   firstName,
@@ -9,6 +10,7 @@ const SpeakerDetail = ({
   bio,
   onHeartFavoriteHandler,
 }) => {
+    console.log('SpeakerDetail')
   return (
     <div className="card col-4 cardmin">
       <ImageToggleOnScroll
@@ -30,6 +32,8 @@ const SpeakerDetail = ({
             {firstName} {lastName}
           </span>
         </h4>
+       
+             
         <span>{bio}</span>
       </div>
     </div>

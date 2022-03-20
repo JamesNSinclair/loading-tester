@@ -10,7 +10,7 @@ const pageToShow = pageName => {
 };
 
 const App = ({pageName}) => {
-
+    console.log('App')
     return (  <Themeprovider>
   <div>{pageToShow(pageName)}</div>;
  </Themeprovider>
