@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 
 const OriginalInputElement = () => {
   // const random_boolean = Math.random() >= 0.5;
@@ -26,6 +30,7 @@ const OriginalInputElement = () => {
   ) : (
     <div>
       <input placeholder="Enter Some Text" />
+      <Button>Test Button</Button>
     </div>
   );
 };

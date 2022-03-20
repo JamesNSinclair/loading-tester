@@ -1,6 +1,6 @@
 import React, {useRef, useState, useEffect} from "react";
 
-const ImageToToggleOnScroll = () => {
+const ImageToToggleOnScroll = ({colImg, bwImg}) => {
     const imageRef = useRef(null);
 
     const [isLoading, setIsLoading] = useState(true);
