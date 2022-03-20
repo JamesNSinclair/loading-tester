@@ -1,7 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Link from 'next/link';
+import {useConfigContext, useUpdateConfigContext} from "./ThemeContext";
 
 export const Menu = () => {
+
+     
+        const toggleSignUp = useUpdateConfigContext();
+
   return (
     <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
       <div className="navbar">
@@ -15,6 +20,12 @@ export const Menu = () => {
             <Link href="/speakers">
               <a className="nav-link">Speakers</a>
             </Link>
+          </li>
+          <li>
+              <a className="nav-link" onClick={(e) => {e.preventDefault(), toggleSignUp('showSignMeUp');}}>Hide/Display Speaker Days</a>
+          </li>
+          <li>
+              <a className="nav-link" onClick={(e) => {e.preventDefault(), toggleSignUp('showSpeakerSpeakingDays');}}>Hide/Display Sign Me Up</a>
           </li>
         </ul>
       </div>

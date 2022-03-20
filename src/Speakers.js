@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 
 import {Header} from './Header';
 import {Menu} from './Menu';
 import SpeakerData from "./SpeakerData";
 import SpeakerDetail from "./SpeakerDetail";
+import { useConfigContext } from "./ThemeContext";
 
 const Speakers = ({}) => {
     const [speakingSaturday, setSpeakingSaturday] = useState(true);
@@ -12,17 +13,18 @@ const Speakers = ({}) => {
   const [speakerList, setSpeakerList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+    const context = useConfigContext();
 
     useEffect(() => {
         setIsLoading(true);
         const fetchData = async() => {
             await setTimeout(function() {
-                console.log(isLoading);
-            }, 1000);
-            setIsLoading(false);
+                 setIsLoading(false);
+                setSpeakerList(SpeakerData);
+            }, 5000);
+         
         };
         fetchData();
-        setSpeakerList(SpeakerData);
         return() => {
             console.log('cleanup');
         };
@@ -69,30 +71,59 @@ const Speakers = ({}) => {
     if (isLoading) return <div>Loading....</div>;
     return (
         <div>
-            <Header />
-            <Menu />
-            <div className="container">
-                <div className="row">
-                    <div className="card-deck">
-                          {speakerListFiltered.map(
-              ({ id, firstName, lastName, bio, favorite }) => {
-                return (
-                  <SpeakerDetail
-                    key={id}
-                    id={id}
-                    favorite={favorite}
-                    firstName={firstName}
-                    lastName={lastName}
-                    bio={bio}
-                    onHeartFavoriteHandler={heartFavoriteHandler}
-                  />);
-              }
-                          )};
-                    </div>
+          <Header />
+          <Menu />
+          <div className="container">
+            <div className="btn-toolbar  margintopbottom5 checkbox-bigger">
+              {context.showSpeakerSpeakingDays === false ? null : (
+                <div className="hide">
+                  <div className="form-check-inline">
+                    <label className="form-check-label">
+                      <input
+                        type="checkbox"
+                        className="form-check-input"
+                        onChange={handleChangeSaturday}
+                        checked={speakingSaturday}
+                      />
+                      Saturday Speakers
+                    </label>
+                  </div>
+                  <div className="form-check-inline">
+                    <label className="form-check-label">
+                      <input
+                        type="checkbox"
+                        className="form-check-input"
+                        onChange={handleChangeSunday}
+                        checked={speakingSunday}
+                      />
+                      Sunday Speakers
+                    </label>
+                  </div>
                 </div>
+              )}
             </div>
+            <div className="row">
+              <div className="card-deck">
+                {speakerListFiltered.map(
+                  ({ id, firstName, lastName, bio, favorite }) => {
+                    return (
+                      <SpeakerDetail
+                        key={id}
+                        id={id}
+                        favorite={favorite}
+                        onHeartFavoriteHandler={heartFavoriteHandler}
+                        firstName={firstName}
+                        lastName={lastName}
+                        bio={bio}
+                      />
+                    );
+                  },
+                )}
+              </div>
+            </div>
+          </div>
         </div>
-    );
-};
+      );
+                };
 
 export default Speakers;
